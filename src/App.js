@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodosList from './todos-list';
 import './App.css';
-
+import CreateTodo from './create-todo';
 const todos=[
   {
     task:'make react tutorial',
@@ -26,6 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>HHello</h1>  
+        <CreateTodo />
         <TodosList todos={this.state.todos}/>     
       </div>
     );
