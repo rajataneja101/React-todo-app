@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodosList from './todos-list';
 import './App.css';
 import CreateTodo from './create-todo';
+import _ from 'lodash';
 const todos=[
   {
     task:'make react tutorial',
@@ -27,7 +28,7 @@ class App extends Component {
       <div className="App">
         <h1>HHello</h1>  
         <CreateTodo createTask={this.createTask.bind(this)}/>
-        <TodosList todos={this.state.todos} />     
+        <TodosList todos={this.state.todos} toggleTask={this.toggleTask.bind(this)}/>     
       </div>
     );
   }
@@ -39,6 +40,12 @@ class App extends Component {
   });
   this.setState({todos: this.state.todos});
 }
+  toggleTask(task)
+  {
+    const foundtodo= _.find(this.state.todos, todo => todo.task === task);
+    foundtodo.isCompleted= !foundtodo.isCompleted;
+    this.setState({todos: this.state.todos});
+  }
 }
 
 export default App;
